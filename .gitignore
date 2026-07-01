@@ -1,0 +1,40 @@
+# CDK generated
+cdk.out/
+.cdk.staging/
+
+# CDK cached context — contains real VPC/subnet IDs, account numbers
+cdk.context.json
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+venv/
+.venv/
+
+# Config files contain secrets — never commit real values
+config/*.yaml
+!config/production.yaml.example
+
+# Third-party plugin binaries — fetch via Dockerfile / build step, don't commit
+debezium-plugin/**/*.jar
+
+# Local env files
+.env
+.env.local
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (if CDK ever needs it)
+node_modules/
+package-lock.json

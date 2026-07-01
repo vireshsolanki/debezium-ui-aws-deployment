@@ -1,0 +1,52 @@
+{
+  "name": "mysql-source-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+
+    "database.hostname": "FILL_VIA_UI",
+    "database.port":     "3306",
+    "database.user":     "FILL_VIA_UI",
+    "database.password": "FILL_VIA_UI",
+
+    "database.server.id": "1234",
+
+    "topic.prefix":    "dz",
+    "topic.delimiter": "-",
+
+    "database.include.list": "p_orders",
+    "table.include.list":    "p_orders.orders",
+
+    "schema.history.internal.kafka.bootstrap.servers": "FILL_WITH_MSK_BOOTSTRAP",
+    "schema.history.internal.kafka.topic": "debezium-schema-history",
+    "schema.history.internal.producer.security.protocol": "SASL_SSL",
+    "schema.history.internal.producer.sasl.mechanism": "AWS_MSK_IAM",
+    "schema.history.internal.producer.sasl.jaas.config": "software.amazon.msk.auth.iam.IAMLoginModule required;",
+    "schema.history.internal.producer.sasl.client.callback.handler.class": "software.amazon.msk.auth.iam.IAMClientCallbackHandler",
+    "schema.history.internal.consumer.security.protocol": "SASL_SSL",
+    "schema.history.internal.consumer.sasl.mechanism": "AWS_MSK_IAM",
+    "schema.history.internal.consumer.sasl.jaas.config": "software.amazon.msk.auth.iam.IAMLoginModule required;",
+    "schema.history.internal.consumer.sasl.client.callback.handler.class": "software.amazon.msk.auth.iam.IAMClientCallbackHandler",
+
+    "include.schema.changes": "false",
+
+    "snapshot.mode": "schema_only",
+
+    "decimal.handling.mode": "double",
+    "time.precision.mode": "connect",
+    "bigint.unsigned.handling.mode": "long",
+    "include.query": "false",
+    "tombstones.on.delete": "true",
+
+    "errors.tolerance": "all",
+    "errors.log.enable": "true",
+    "errors.log.include.messages": "true",
+    "errors.deadletterqueue.topic.name": "debezium-dlq",
+    "errors.deadletterqueue.topic.replication.factor": "3",
+    "errors.deadletterqueue.context.headers.enable": "true",
+
+    "heartbeat.interval.ms": "10000",
+    "heartbeat.topics.prefix": "__debezium-heartbeat",
+
+    "tasks.max": "1"
+  }
+}
